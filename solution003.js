@@ -12,48 +12,76 @@
 // Then you add 200 units of apple juice again
 // Now the concentration of apple juice is 0.75, while the concentration of banana juice is only 0.25 (300 units apple juice + 100 units banana juice)
 // Complete the functions in order to provide this functionality. The test code for the example above can be found in the test fixture.
+function Jar() {
 
-class Jar() {
-    constructor(){
-        this.totalAmount = 0
-        this.types = {}
-    }
-
-    add(amount, type){
-        if(this.types[type]){
-            this.types[type] += amount
-        }else{
-        this.types[type] = amount
-        this.totalAmount+=amount
-        }
-    }
-    pourOut(amount){
-        this.totalAmount-=amount
-    }
-    getTotalAmount(){
-        return this.totalAmount
-    }
-    getConcentration(type){
-        return this.
-    }
-    // TODO
+    this.totalAmount = 0
+    this.typesAmount = {}
   }
   
   Jar.prototype.add = function(amount, type) {
-    // TODO
+    if(this.typesAmount[type]){
+        this.typesAmount[type] += amount
+        this.totalAmount += amount
+    }else{
+        this.typesAmount[type] = amount
+        this.totalAmount+=amount
+    }
   };
   
   Jar.prototype.pourOut = function(amount) {
-    // TODO
+    Object.entries(this.typesAmount).forEach((x,i)=>{
+      console.log(x)
+      this.typesAmount[x[0]] = x[1]/this.totalAmount
+    })
+    console.log(this.typesAmount, this.totalAmount)
+    this.totalAmount-=amount
+    Object.entries(this.typesAmount).forEach(x=>{
+      console.log(x)
+      this.typesAmount[x[0]] = x[1] * this.totalAmount
+      console.log(x)
+      
+    })
+    console.log(this.typesAmount, this.totalAmount)
   };
   
   Jar.prototype.getTotalAmount = function() {
-    // TODO
+      return this.totalAmount
   };
   
   Jar.prototype.getConcentration = function(type) {
-    // TODO
+    if(!this.typesAmount[type]){
+      return 0
+    }
+    return (this.typesAmount[type])/this.totalAmount
   }
 
+
+
+// class Jar {
+//     constructor(){
+//         this.totalAmount = 0
+//         this.typesAmount = {}
+//     }
+
+//     add(amount, type){
+//         if(this.typesAmount[type]){
+//             this.typesAmount[type] += amount
+//         }else{
+//         this.typesAmount[type] = amount
+//         this.totalAmount+=amount
+//         }
+//     }
+//     pourOut(amount){
+//         this.totalAmount-=amount
+//     }
+//     getTotalAmount(){
+//         return this.totalAmount
+//     }
+//     getConcentration(type){
+//         return (this.typesAmount[type])/this.totalAmount
+//     }
+// }
+
 let jar = new Jar
-jar.add
+console.log(jar)
+
